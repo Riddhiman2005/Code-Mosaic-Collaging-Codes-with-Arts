@@ -12,20 +12,20 @@ def draw_tree(x, y, length, angle, depth):
         draw_tree(x_end, y_end, length * 0.7, angle - 30, depth - 1)
         draw_tree(x_end, y_end, length * 0.7, angle + 30, depth - 1)
 
-# Set up the plot
+# Setting up the plot
 
 fig, ax = plt.subplots(figsize=(8, 8))
 ax.set_aspect('equal')
 ax.axis('off')
 
-# Starting point and parameters
+# Starting point and the parameters
 start_x = 0
 start_y = 0
 trunk_length = 1
 trunk_angle = 90
 tree_depth = 10
 
-# Generate the tree
+# Generating the tree
 draw_tree(start_x, start_y, trunk_length, trunk_angle, tree_depth)
 
 # Show the plot
