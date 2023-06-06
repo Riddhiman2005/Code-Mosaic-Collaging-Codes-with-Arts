@@ -65,6 +65,7 @@ def mouth():
     seth(230)
     circle(-120, 100)
 
+    # Red Scarf
 
 def scarf():
     fillcolor('#e70010')
@@ -89,6 +90,7 @@ def nose():
     circle(20)
     end_fill()
 
+# Doraemon's Eyes are Black
 
 def black_eyes():
     seth(0)
