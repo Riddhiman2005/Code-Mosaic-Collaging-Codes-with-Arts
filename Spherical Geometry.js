@@ -1,4 +1,15 @@
 
+//Motivation: It creates a viewport with a 3D sphere rendered inside it. 
+//The user can interact with the viewport using mouse and keyboard controls to move the camera position and view the sphere from different angles.
+
+//When you run the code, it will open a window displaying the 3D viewport. 
+//The initial camera position is set to view the sphere from a distance. You can use the following controls to interact with the viewport:
+
+// Mouse click and drag: Move the camera position by dragging the mouse. This allows you to rotate the view around the sphere.
+// Mouse wheel: Zoom in or out by scrolling the mouse wheel.
+// Keyboard arrow keys: Move the camera position closer to or farther from the sphere.
+// As you interact with the viewport, the camera position and orientation are updated, and the sphere is rendered accordingly, giving you a dynamic 3D view.
+
 
 import javafx.application.Application;
 import javafx.scene.Group;
