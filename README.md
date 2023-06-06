@@ -22,7 +22,10 @@ Here are some examples of the art projects you'll find in this repository:
 - **Doraemon**
 - **Tree**
 - **Heart**
-- 
+- **Butterfly**
+- **Emoji-s**
+
+
 I'll continue to update this repository regularly, introducing new projects and 
 refining existing ones. Feel free to explore the code, experiment with it, and adapt it to your own artistic ideas.
 
