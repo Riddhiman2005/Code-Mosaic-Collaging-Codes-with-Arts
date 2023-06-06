@@ -10,8 +10,7 @@ In this repository, I explore the intersection of coding and art. I believe that
 I aim to push the boundaries of what's possible and inspire others to explore the artistic side of coding.
 
 
-| ![image](https://github.com/Riddhiman2005/Coding-Repositories/assets/130882317/353a52f8-3f32-496a-9104-516aecd1eadd)
- | 
+| ![image](https://github.com/Riddhiman2005/Coding-Repositories/assets/130882317/353a52f8-3f32-496a-9104-516aecd1eadd)| 
 |:--:| 
 | **Art is Coding, and Coding is an Art** |
 
@@ -46,4 +45,5 @@ If you'd like to suggest a new project or discuss an idea, please open an issue 
 
 Thank you for visiting the Repository! 
 
+![image](https://github.com/Riddhiman2005/Coding-Repositories/assets/130882317/de8a2930-99b7-47d8-b7f8-677f25af26ca)
 
