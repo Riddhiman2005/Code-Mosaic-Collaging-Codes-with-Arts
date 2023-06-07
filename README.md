@@ -24,6 +24,10 @@ Here are some examples of the art projects you'll find in this repository:
 - **Heart**
 - **Butterfly**
 - **Emoji-s**
+- **Rainbow**
+- **Spherical Geometry**
+- **Brownian Motion**
+- 
 
 
 I'll continue to update this repository regularly, introducing new projects and 
