@@ -17,7 +17,8 @@ int main()
     std::uniform_real_distribution<float> dis(-MAX_VELOCITY, MAX_VELOCITY);
     std::vector<sf::CircleShape> particles(NUM_PARTICLES);
 
-    // Initialize particles at random positions
+    // Initializing particles at random positions
+    
     for (auto& particle : particles)
     {
         particle.setRadius(PARTICLE_RADIUS);
@@ -46,7 +47,8 @@ int main()
 
         window.clear(sf::Color::White);
 
-        // Draw particles
+        // Draw the particles
+        
         for (const auto& particle : particles)
         {
             window.draw(particle);
