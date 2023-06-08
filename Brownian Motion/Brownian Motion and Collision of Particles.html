@@ -1,0 +1,128 @@
+
+// Particles undergo Brownian motion and collide with each other. 
+// When a collision is detected, the particles change their trajectories based on the laws of elastic collisions 
+// and their velocities are updated accordingly.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="animationCanvas"></canvas>
+
+    <script>
+        // Define the particle class
+        class Particle {
+            constructor(x, y, size, color) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.color = color;
+                this.vx = Math.random() - 0.5; // Random velocity in x direction
+                this.vy = Math.random() - 0.5; // Random velocity in y direction
+            }
+
+            update(canvasWidth, canvasHeight, particles) {
+                // Update particle position based on velocity
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Reflect particle if it hits the canvas edges
+                if (this.x <= 0 || this.x >= canvasWidth) {
+                    this.vx *= -1;
+                }
+                if (this.y <= 0 || this.y >= canvasHeight) {
+                    this.vy *= -1;
+                }
+
+                // Check for collisions with other particles
+                for (let i = 0; i < particles.length; i++) {
+                    const otherParticle = particles[i];
+
+                    if (otherParticle !== this) {
+                        const dx = otherParticle.x - this.x;
+                        const dy = otherParticle.y - this.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < this.size + otherParticle.size) {
+                            // Collisions detected, change trajectory
+                            const angle = Math.atan2(dy, dx);
+                            const sin = Math.sin(angle);
+                            const cos = Math.cos(angle);
+
+                            // Rotate velocities
+                            const vx1 = this.vx * cos + this.vy * sin;
+                            const vy1 = this.vy * cos - this.vx * sin;
+                            const vx2 = otherParticle.vx * cos + otherParticle.vy * sin;
+                            const vy2 = otherParticle.vy * cos - otherParticle.vx * sin;
+
+                            // Calculate new velocities
+                            const vx1Final = ((this.size - otherParticle.size) * vx1 + 2 * otherParticle.size * vx2) / (this.size + otherParticle.size);
+                            const vx2Final = ((otherParticle.size - this.size) * vx2 + 2 * this.size * vx1) / (this.size + otherParticle.size);
+                            const vy1Final = vy1;
+                            const vy2Final = vy2;
+
+                            // Update velocities
+                            this.vx = vx1Final * cos - vy1Final * sin;
+                            this.vy = vy1Final * cos + vx1Final * sin;
+                            otherParticle.vx = vx2Final * cos - vy2Final * sin;
+                            otherParticle.vy = vy2Final * cos + vx2Final * sin;
+                        }
+                    }
+                }
+            }
+
+            draw(ctx) {
+                // Draw the particle on the canvas
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgb(${this.color})`;
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
+
+        // Animation loop
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Update and draw each particle
+          
+            particles.forEach(particle => {
+                particle.update(canvas.width, canvas.height, particles);
+                particle.draw(ctx);
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        // Initialize the animation
+        const canvas = document.getElementById('animationCanvas');
+        const ctx = canvas.getContext('2d');
+        const particles = [];
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Create particles
+        for (let i = 0; i < 100; i++) {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            const size = Math.random() * 5 + 2;
+            const color = `${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}`;
+            particles.push(new Particle(x, y, size, color));
+        }
+
+        // Start the animation loop
+        animate();
+    </script>
+</body>
+</html>
+
+
+
