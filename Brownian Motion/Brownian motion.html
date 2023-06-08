@@ -1,0 +1,96 @@
+
+// Basic Animations
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="animationCanvas"></canvas>
+
+    <script>
+        // Define the particle class
+      
+        class Particle {
+            constructor(x, y, size, color) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.color = color;
+                this.vx = Math.random() - 0.5; // Random velocity in x direction
+                this.vy = Math.random() - 0.5; // Random velocity in y direction
+            }
+
+            update(canvasWidth, canvasHeight) {
+                // Update particle position based on velocity
+              
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Reflect particle if it hits the canvas edges
+                if (this.x <= 0 || this.x >= canvasWidth) {
+                    this.vx *= -1;
+                }
+                if (this.y <= 0 || this.y >= canvasHeight) {
+                    this.vy *= -1;
+                }
+            }
+
+            draw(ctx) {
+                // Draw the particle as a circle on the canvas
+              
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
+
+        // Animation loop
+      
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Update and draw each particle
+            particles.forEach(particle => {
+                particle.update(canvas.width, canvas.height);
+                particle.draw(ctx);
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        // Set up canvas and particles
+      
+        const canvas = document.getElementById('animationCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = 800;  // Set canvas width
+        canvas.height = 600; // Set canvas height
+
+        const numParticles = 100; // Number of particles in the animation
+        const particles = [];
+
+        // Create particles with random positions, sizes, and colors
+      
+        for (let i = 0; i < numParticles; i++) {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            const size = Math.random() * 5 + 2;
+            const color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            particles.push(new Particle(x, y, size, color));
+        }
+
+        // Start the animation loop
+      
+        animate();
+    </script>
+</body>
+</html>
