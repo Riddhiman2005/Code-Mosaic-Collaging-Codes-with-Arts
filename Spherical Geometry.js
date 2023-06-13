@@ -1,6 +1,6 @@
 
-//Motivation: It creates a viewport with a 3D sphere rendered inside it. 
-//The user can interact with the viewport using mouse and keyboard controls to move the camera position and view the sphere from different angles.
+//Aim: To create a viewport with a 3D sphere rendered inside it. 
+//The user can interact with the viewport using a mouse & keyboard to move the camera position and view the sphere from different angles.
 
 //When you run the code, it will open a window displaying the 3D viewport. 
 //The initial camera position is set to view the sphere from a distance. You can use the following controls to interact with the viewport:
